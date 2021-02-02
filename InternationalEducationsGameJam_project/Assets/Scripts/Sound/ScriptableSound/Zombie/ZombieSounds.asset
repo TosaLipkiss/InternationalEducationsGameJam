@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587061eb327efc7409d620b1472e55a0, type: 3}
+  m_Name: ZombieSounds
+  m_EditorClassIdentifier: 
+  m_SoundType:
+  - m_AudioList:
+    - {fileID: 8300000, guid: 258115e1203e97f44873aa43b3c6b799, type: 3}
+    - {fileID: 8300000, guid: c95615bfb25a515429a5bb2af5b6a8f0, type: 3}
+    AudioType: Death
+  - m_AudioList:
+    - {fileID: 8300000, guid: 23c7d925054e96c4f9c2473af293bc76, type: 3}
+    - {fileID: 8300000, guid: 4eef95725f90b244d86826c7faa01f92, type: 3}
+    - {fileID: 8300000, guid: 85590cb0c9e45f2439a105976f5ce0f5, type: 3}
+    - {fileID: 8300000, guid: cbd3a054c1fb30a4e818463141f4f441, type: 3}
+    - {fileID: 8300000, guid: 9e186766ed5577f4db9803973f989176, type: 3}
+    - {fileID: 8300000, guid: 60c9da356969b7948aca3821aa712589, type: 3}
+    - {fileID: 8300000, guid: 2a07c3c3288b7084882115153aff36d1, type: 3}
+    - {fileID: 8300000, guid: 471d899ea7fabaf468a87985c684ecfc, type: 3}
+    - {fileID: 8300000, guid: e4ba0e0bb607a90418bf5f8a2e8d00dc, type: 3}
+    - {fileID: 8300000, guid: 7711a6af590e0004c8eb7c4627bbab0d, type: 3}
+    - {fileID: 8300000, guid: 095bc6b806b444b40ac19c511fae1fe3, type: 3}
+    - {fileID: 8300000, guid: 4d6da26517b8430498aa92c7260525b8, type: 3}
+    - {fileID: 8300000, guid: 40946b9de6847c847966423e57ef34d5, type: 3}
+    - {fileID: 8300000, guid: d8ffa0aeb3c176245aa4f046638c1f72, type: 3}
+    - {fileID: 8300000, guid: aedc100bda9060e469be75b917824891, type: 3}
+    - {fileID: 8300000, guid: 36876621871231b488dd98ab3956ce93, type: 3}
+    AudioType: Breathing
+  - m_AudioList:
+    - {fileID: 8300000, guid: 46b93a8a96ae96a488f83c96cf61acc6, type: 3}
+    - {fileID: 8300000, guid: 3737b885d80a0ea4095460a136175f8f, type: 3}
+    - {fileID: 8300000, guid: cef5285105505c24b8175e320687a280, type: 3}
+    - {fileID: 8300000, guid: 708de6dffc63e834e992c77b11b09eaf, type: 3}
+    - {fileID: 8300000, guid: d8eee748e2ad11c4ebc5d0453062c159, type: 3}
+    - {fileID: 8300000, guid: e036a08274e13484f824a7fe1fc43125, type: 3}
+    - {fileID: 8300000, guid: 82429fd254869df479b63ad70edffc2c, type: 3}
+    - {fileID: 8300000, guid: 7fe6cb45a72cc584c88dfad072b3e277, type: 3}
+    - {fileID: 8300000, guid: 9078787133b9f3f4286ddb2759b5eb18, type: 3}
+    - {fileID: 8300000, guid: 854fb7a5b62964543b96b931ec1e36c6, type: 3}
+    - {fileID: 8300000, guid: 53836497c3bd5474da2db32ac7dbec2d, type: 3}
+    AudioType: ShortAttack
+  - m_AudioList:
+    - {fileID: 8300000, guid: 7679fef5face2c041aa885fbe16271bd, type: 3}
+    - {fileID: 8300000, guid: a17d3588dc9438d498e6b0cf5c05614f, type: 3}
+    - {fileID: 8300000, guid: b10303995435f314b9ab9863d8db34db, type: 3}
+    AudioType: LongAttack
