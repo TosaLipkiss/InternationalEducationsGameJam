@@ -9,7 +9,7 @@ public class GameStats : MonoBehaviour
     private void Awake()
     {
         if (m_Instance == null)
-            m_Instance = null;
+            m_Instance = this;
     }
     public void Addscore(int AddAmount)
     {

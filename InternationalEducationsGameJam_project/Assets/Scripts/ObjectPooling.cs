@@ -16,8 +16,6 @@ public class ObjectPooling : MonoBehaviour
     private List<GameObject> pooledObjects;
 
     public List<ObjectPoolItem> ItemsToPool;
-
-    [SerializeField] GameObject Canvas;
     private void Awake()
     {
         m_Instance = this;
@@ -30,31 +28,30 @@ public class ObjectPooling : MonoBehaviour
         {
             for (int i = 0; i < item.amountToPool; i++)
             {
-                
                 GameObject obj = (GameObject)Instantiate(item.objectToPool);
                 obj.SetActive(false);
                 pooledObjects.Add(obj);
             }
         }
-        
-
     }
-    public GameObject GetPooledObject(string tag)
+    public GameObject GetPooledObject(GameObject tag,Transform Position)
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
-            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag)
+            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i] == tag)
             {
+                pooledObjects[i].SetActive(true);
+                pooledObjects[i].gameObject.transform.position = Position.position;
                 return pooledObjects[i];
             }
         }
         foreach (ObjectPoolItem item in ItemsToPool)
         {
-            if (item.objectToPool.tag == tag)
+            if (item.objectToPool == tag)
             {
                 if (item.Expand)
                 {
-                    GameObject obj = (GameObject)Instantiate(item.objectToPool);
+                    GameObject obj = (GameObject)Instantiate(item.objectToPool,Position);
                     pooledObjects.Add(obj);
                     return obj;
 
