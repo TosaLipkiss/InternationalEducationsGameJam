@@ -10,10 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0515fa7b62ad8434c9abfe5a185b275a, type: 3}
-  m_Name: NormalZombie
+  m_Name: NormalZombie 1
   m_EditorClassIdentifier: 
-  m_Health: 0
-  m_MovementSpeed: 0
-  m_AttackRange: 0
-  m_AttackDamage: 0
-  m_VisionRange: 0
+  m_Health: 100
+  m_MovementSpeed: 10
+  m_WanderRange: 10
+  m_WallMask:
+    serializedVersion: 2
+    m_Bits: 0
+  m_PlayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  m_AttackRange: 3
+  m_AttackDamage: 10
+  m_VisionRange: 10
+  m_Score: 100

@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System;
+using TMPro;
 [System.Serializable]
 public class UI
 {
@@ -18,7 +19,11 @@ public class UIManager : MonoBehaviour
     public List<UI> m_SetInActive; //Parents of the UI and their names.
     [Tooltip("All UI goes in here")]
     public List<UI> m_AllUI; //All UI
-    
+
+    [Header("Score")]
+    public string m_DefaultScoreText;
+    private TextMeshPro m_ScoreText;
+    public Action<int> m_OnScoreChanged;
     private void Awake()
     {
         if (m_Instance == null) //Checks if Instance == nul;
@@ -32,6 +37,11 @@ public class UIManager : MonoBehaviour
                 m_SetInActive[i].m_Parent.SetActive(false); //Sets all UI inactive
             }
         }
+    }
+    private void Start()
+    {
+        m_ScoreText.text = m_DefaultScoreText + "0"; // Sets Standard Text
+        m_OnScoreChanged += OnScoreChange; //Subscribe to function
     }
     private void Update()
     {
@@ -48,6 +58,13 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    #region UICHANGE
+    private void OnScoreChange(int Score)
+    {
+        m_ScoreText.text = m_DefaultScoreText + Score;
+    }
+    #endregion
+    #region UIBUTTONS
     public void LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -72,4 +89,5 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    #endregion
 }

@@ -53,3 +53,16 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a17d3588dc9438d498e6b0cf5c05614f, type: 3}
     - {fileID: 8300000, guid: b10303995435f314b9ab9863d8db34db, type: 3}
     AudioType: LongAttack
+  - m_AudioList:
+    - {fileID: 8300000, guid: 67616293d8a84fb4296f135094a052b5, type: 3}
+    - {fileID: 8300000, guid: 3d48980d8d5ddf143b32ac72672c5660, type: 3}
+    - {fileID: 8300000, guid: dfa07a62890b1db479167146b507e3c9, type: 3}
+    - {fileID: 8300000, guid: 0bafb488a4593e141b5fb5fcc2e18091, type: 3}
+    - {fileID: 8300000, guid: 133a969dbad97e8488e366d762189c77, type: 3}
+    - {fileID: 8300000, guid: d5c6f0c2293947340a8f0449f17c51b7, type: 3}
+    - {fileID: 8300000, guid: 1ec0323ad1f8a4940b9e39f1b38e6b9d, type: 3}
+    - {fileID: 8300000, guid: 04e497c9c581b2f43a0612e9972a4071, type: 3}
+    - {fileID: 8300000, guid: 2e68b3d30acc6f1429901ac2ddb766c6, type: 3}
+    - {fileID: 8300000, guid: 970516c28ae495a4ba7f816170546ef1, type: 3}
+    - {fileID: 8300000, guid: efc83f57ae584ed4ba373b53d908422f, type: 3}
+    AudioType: Growling

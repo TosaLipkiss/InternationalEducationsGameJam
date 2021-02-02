@@ -10,9 +10,11 @@ public class GameStats : MonoBehaviour
     {
         if (m_Instance == null)
             m_Instance = this;
+
     }
     public void Addscore(int AddAmount)
     {
         m_Score += AddAmount;
+        UIManager.m_Instance.m_OnScoreChanged(m_Score); //Changes UI
     }
 }
