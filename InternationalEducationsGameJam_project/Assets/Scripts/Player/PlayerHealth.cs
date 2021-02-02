@@ -6,12 +6,12 @@ public class PlayerHealth : MonoBehaviour
 {
     //Float
     private float maxHealth = 3;
-    private float currentHealth;
+    [SerializeField] private float currentHealth;
 
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = currentHealth;
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -19,4 +19,13 @@ public class PlayerHealth : MonoBehaviour
     {
         
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            currentHealth -= 1;
+        }
+    }
+
 }
