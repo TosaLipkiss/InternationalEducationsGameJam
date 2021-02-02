@@ -28,7 +28,6 @@ public class EnemySpawner : MonoBehaviour
             for (int i = 0; i < Waves[WaveIndex].m_Wave.Count; i++)
             {
                 GameObject EnemyUnit = ObjectPooling.m_Instance.GetPooledObject(Waves[WaveIndex].m_Wave[i], m_Spawnlocation); //Spawns an Enemy Unit and gives the location.
-                
                 yield return new WaitForSeconds(m_DelayUnit);
             }
             yield return new WaitForSeconds(m_DelayWave);
