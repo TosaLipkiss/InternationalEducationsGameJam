@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 977199293178319191}
   - component: {fileID: 2542492889653457257}
   - component: {fileID: 3227503308727686758}
+  - component: {fileID: 2126976254785825084}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -72,5 +73,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlayerSounds: []
   m_ZombieSounds:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 45d094bba50fea440b2a92cde6f495ba, type: 2}
   m_EnviromentSound: []
+--- !u!114 &2126976254785825084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3952096294688284120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56dc09c586a1dad4d95e074097e3deeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Player: {fileID: 0}
