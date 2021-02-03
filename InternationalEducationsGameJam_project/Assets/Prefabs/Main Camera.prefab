@@ -97,5 +97,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3639862398931661994, guid: ee5bd1d4dbf00c74b8f851dc2d3e391f, type: 3}
-  smoothSpeed: 0.125
+  smoothSpeed: 0.9
   offset: {x: 0, y: 0, z: -10}
