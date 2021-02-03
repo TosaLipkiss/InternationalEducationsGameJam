@@ -10,9 +10,6 @@ public class GeneralManager : MonoBehaviour
     {
         if (m_Instance == null)
             m_Instance = this;
-    }
-    private void Start()
-    {
         m_Player = FindObjectOfType<PlayerMovement>().gameObject;
     }
 }
