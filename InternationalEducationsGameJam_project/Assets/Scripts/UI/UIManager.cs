@@ -89,6 +89,10 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit(0);
     }
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
