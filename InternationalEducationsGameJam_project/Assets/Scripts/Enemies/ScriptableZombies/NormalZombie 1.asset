@@ -17,11 +17,12 @@ MonoBehaviour:
   m_WanderRange: 10
   m_WallMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_PlayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 320
   m_AttackRange: 3
   m_AttackDamage: 10
-  m_VisionRange: 10
+  m_VisionRange: 30
+  m_AttackSpeed: 2
   m_Score: 100

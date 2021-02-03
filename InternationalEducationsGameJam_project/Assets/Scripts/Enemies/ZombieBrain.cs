@@ -15,10 +15,14 @@ public class ZombieBrain : MonoBehaviour, IAttackable
     private AudioClip m_Breathing; // Sound of the Zombie Breathing
     private AudioClip m_Growl; // Sound of the zombie Growling
     private AudioSource m_AudioSource; //Audiosource
-    private bool m_PlayingAudioSource; //Is The Unit Playing the Audio Source
+    //private bool m_PlayingAudioSource = false; //Is The Unit Playing the Audio Source
     [Header("Movement")]
     private Vector2 m_Waypoint; // Waypoint This Target is moving towards.
     #endregion
+    private void Awake()
+    {
+        m_Enemy = Instantiate(m_EnemyStats);
+    }
     private void OnEnable()
     {
         StartCoroutine(INewDirection()); //Starts Moving Around
@@ -31,15 +35,7 @@ public class ZombieBrain : MonoBehaviour, IAttackable
         PlayerInVision();
     }
     #region Movement
-    private void Move()
-    {
-        if (!m_Enemy.m_SpottedEnemy)
-        {
-        transform.position += transform.TransformDirection(Vector3.forward) * m_Enemy.m_MovementSpeed * Time.deltaTime;
-        if (Vector2.Distance(transform.position, m_Waypoint) < 0.5)
-            m_Enemy.m_Arrived = true;
-        }
-    }
+    #region Direction
     private IEnumerator INewDirection()
     {
         while (!m_Enemy.m_SpottedEnemy)
@@ -51,14 +47,14 @@ public class ZombieBrain : MonoBehaviour, IAttackable
     private void NewDirection()
     {
         NewWayPoint();
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, m_Waypoint,m_Enemy.m_WanderRange,m_Enemy.m_WallMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, m_Waypoint, m_Enemy.m_WanderRange, m_Enemy.m_WallMask);
         if (hit.distance < 1 && hit.collider != null)
         {
             NewWayPoint();
         }
         else
         {
-            transform.LookAt(m_Waypoint);
+            //transform.LookAt(m_Waypoint);
             m_Enemy.m_Arrived = false;
         }
     }
@@ -67,25 +63,43 @@ public class ZombieBrain : MonoBehaviour, IAttackable
         m_Waypoint = new Vector2(Random.Range(transform.position.x - m_Enemy.m_WanderRange, transform.position.x + m_Enemy.m_WanderRange
      ), Random.Range(transform.position.y - m_Enemy.m_WanderRange, transform.position.y + m_Enemy.m_WanderRange));
     }
+    #endregion
+    private void Move()
+    {
+        if (!m_Enemy.m_SpottedEnemy)
+        {
+            //transform.position += transform.TransformDirection(Vector3.forward) * m_Enemy.m_MovementSpeed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, m_Waypoint, m_Enemy.m_MovementSpeed * Time.deltaTime);
+            if (Vector2.Distance(transform.position, m_Waypoint) < 0.5)
+            m_Enemy.m_Arrived = true;
+        }
+    }
+
     public void CheckIfInCameraVision()
     {
         if (GetComponent<Renderer>().isVisible)
         {
-            if (!m_PlayingAudioSource)
+          
+            if (!SoundManager.m_Instance.m_ZombieSoundActive)
             {
-                PlaySound(m_Breathing);
+               StartCoroutine(PlaySound(m_Breathing));
             }
             RaycastHit2D hit = Physics2D.Raycast(transform.position, GeneralManager.m_Instance.m_Player.transform.position, m_Enemy.m_VisionRange, m_Enemy.m_PlayerMask);
-            if (hit.collider.tag == "Player")
+            if (hit.collider != null)
             {
-                transform.LookAt(hit.transform.position);
+                Debug.Log("hit");
+              if (hit.collider.tag == "Player")
+              {
+                    Debug.Log("hit Player");
+                //transform.LookAt(hit.transform.position);
                 m_Enemy.m_SpottedEnemy = true;
                 m_Enemy.m_TargetPosition = hit.transform.position;
                 m_Enemy.m_Target = hit.collider.gameObject;
+              }
             }
             else
             {
-                transform.LookAt(m_Waypoint);
+                //transform.LookAt(m_Waypoint);
             }
         }
     }
@@ -93,14 +107,14 @@ public class ZombieBrain : MonoBehaviour, IAttackable
     {
         if (m_Enemy.m_SpottedEnemy)
         {
-            transform.position += transform.TransformDirection(Vector3.forward) * m_Enemy.m_MovementSpeed * Time.deltaTime;
+            //transform.position += transform.TransformDirection(Vector3.forward) * m_Enemy.m_MovementSpeed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, GeneralManager.m_Instance.m_Player.transform.position, m_Enemy.m_MovementSpeed * Time.deltaTime);
             if (Vector2.Distance(transform.position, m_Enemy.m_TargetPosition) < 0.1f)
                 Attack();
         }
     }
     #endregion
     #region Sound
-
     public void AssignSound(AudioClip Death, AudioClip Attack, AudioClip Breathing, AudioClip Growl)
     {
         //Assigning Value's
@@ -112,11 +126,12 @@ public class ZombieBrain : MonoBehaviour, IAttackable
     }
     private IEnumerator PlaySound(AudioClip Clip)
     {
+        Debug.Log("playing sound");
         m_AudioSource.clip = Clip;
         m_AudioSource.Play();
-        m_PlayingAudioSource = true;
+        SoundManager.m_Instance.m_ZombieSoundActive = true;
         yield return new WaitForSeconds(m_AudioSource.clip.length);
-        m_PlayingAudioSource = false;
+        SoundManager.m_Instance.m_ZombieSoundActive = false;
     }
     #endregion
     #region Attack Or Damage

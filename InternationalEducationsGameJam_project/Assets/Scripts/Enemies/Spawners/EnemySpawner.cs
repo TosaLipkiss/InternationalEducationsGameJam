@@ -26,6 +26,10 @@ public class EnemySpawner : MonoBehaviour
     private AudioClip m_Breathing; // Sound of the Zombie Breathing
     private AudioClip m_Growl; // Sound of the zombie Growling
     #endregion
+    private void Start()
+    {
+        StartWave();
+    }
     public void StartWave()
     {
         m_WaveCoroutine = SpawnWave();

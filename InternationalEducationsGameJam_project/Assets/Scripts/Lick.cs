@@ -1,22 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Lick : MonoBehaviour
 {
-    public Image SuperLickBar;
-
-    bool isSuperLicking = false;
-    bool isNormalLicking = false;
+    bool isLicking = false;
     float tongueStartStretch = 0;
     float tongueCurrentStretch = 0;
     float tongueMaxStretch = 0.2f;
-    float tongueSpeed = 1.0f;
-
-    float superLickTimer = 0f;
-    float currentTime = 0f;
-    float maxTime = 3f;
+    float tongueSpeed = 2.0f;
 
     LickState currentState = LickState.Input;
 
@@ -27,95 +19,39 @@ public class Lick : MonoBehaviour
         StretchDecrease
     }
 
-    private void Start()
-    {
-        currentTime = 0f;
-    }
-
     private void Update()
     {
-        currentTime += Time.deltaTime;
-
-        LickIt();
-        SuperLick();
-
-        SuperLickBar.fillAmount = currentTime / maxTime;
-    }
-
-    void LickIt()
-    {
-        if (currentState == LickState.Input)
+        if(currentState == LickState.Input)
         {
-            if (Input.GetKeyDown(KeyCode.A) && isNormalLicking == false && isSuperLicking == false)
+            if(Input.GetKeyDown(KeyCode.Mouse0))
             {
-                tongueSpeed = 1.0f;
-                tongueMaxStretch = 0.2f;
-                isNormalLicking = true;
+                Debug.Log("Input -> stretch increase");
                 currentState = LickState.StretchIncrease;
             }
         }
-        else if (currentState == LickState.StretchIncrease)
+        else if(currentState == LickState.StretchIncrease)
         {
             tongueCurrentStretch += tongueSpeed * Time.deltaTime;
             tongueCurrentStretch = Mathf.Clamp(tongueCurrentStretch, tongueStartStretch, tongueMaxStretch);
             transform.localScale = new Vector3(tongueCurrentStretch, transform.localScale.y, transform.localScale.z);
 
-            if (tongueCurrentStretch >= tongueMaxStretch)
+            if(tongueCurrentStretch >= tongueMaxStretch)
             {
+                Debug.Log("Stretch increase -> stretch decrease");
                 currentState = LickState.StretchDecrease;
             }
         }
-        else if (currentState == LickState.StretchDecrease)
+        else if(currentState == LickState.StretchDecrease)
         {
             tongueCurrentStretch -= tongueSpeed * Time.deltaTime;
             tongueCurrentStretch = Mathf.Clamp(tongueCurrentStretch, tongueStartStretch, tongueMaxStretch);
             transform.localScale = new Vector3(tongueCurrentStretch, transform.localScale.y, transform.localScale.z);
 
-            if (tongueCurrentStretch <= tongueStartStretch)
+            if(tongueCurrentStretch <= tongueStartStretch)
             {
+                Debug.Log("stretch decrease -> Input");
                 currentState = LickState.Input;
             }
-        }
-
-        isNormalLicking = false;
-    }
-
-    void SuperLick()
-    {
-        if (currentState == LickState.Input)
-        {
-            if (Input.GetKeyDown(KeyCode.Q) && currentTime >= maxTime && isNormalLicking == false && isSuperLicking == false)
-            {
-                currentTime = 0f;
-                tongueSpeed = 2.0f;
-                tongueMaxStretch = 2f;
-                isSuperLicking = true;
-                currentState = LickState.StretchIncrease;
-            }
-        }
-        else if (currentState == LickState.StretchIncrease)
-        {
-            tongueCurrentStretch += tongueSpeed * Time.deltaTime;
-            tongueCurrentStretch = Mathf.Clamp(tongueCurrentStretch, tongueStartStretch, tongueMaxStretch);
-            transform.localScale = new Vector3(tongueCurrentStretch, transform.localScale.y, transform.localScale.z);
-
-            if (tongueCurrentStretch >= tongueMaxStretch)
-            {
-                currentState = LickState.StretchDecrease;
-            }
-        }
-        else if (currentState == LickState.StretchDecrease)
-        {
-            tongueCurrentStretch -= tongueSpeed * Time.deltaTime;
-            tongueCurrentStretch = Mathf.Clamp(tongueCurrentStretch, tongueStartStretch, tongueMaxStretch);
-            transform.localScale = new Vector3(tongueCurrentStretch, transform.localScale.y, transform.localScale.z);
-
-            if (tongueCurrentStretch <= tongueStartStretch)
-            {
-                currentState = LickState.Input;
-            }
-
-            isSuperLicking = false;
         }
     }
 }
