@@ -41,7 +41,20 @@ public class Lick : MonoBehaviour
 
         SuperLickBar.fillAmount = currentTime / maxTime;
     }
-
+    private void CalculateAngle()
+    {
+        Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 dir = Input.mousePosition - pos;
+        float angl = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (!GetComponent<SpriteRenderer>().flipX)
+        {
+            transform.rotation = Quaternion.AngleAxis(angl, Vector3.forward);
+        }
+        else
+        {
+            transform.rotation = Quaternion.AngleAxis(-angl, Vector3.forward);
+        }
+    }
     void LickIt()
     {
         if (currentState == LickState.Input)
@@ -52,6 +65,8 @@ public class Lick : MonoBehaviour
                 tongueMaxStretch = 0.2f;
                 isNormalLicking = true;
                 currentState = LickState.StretchIncrease;
+                CalculateAngle();
+
             }
         }
         else if (currentState == LickState.StretchIncrease)
@@ -91,6 +106,7 @@ public class Lick : MonoBehaviour
                 tongueMaxStretch = 2f;
                 isSuperLicking = true;
                 currentState = LickState.StretchIncrease;
+                CalculateAngle();
             }
         }
         else if (currentState == LickState.StretchIncrease)

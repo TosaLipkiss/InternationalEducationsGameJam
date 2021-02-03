@@ -39,12 +39,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void FlipPlayer(float directionX)
     {
-        if(directionX > 0 && !facingRight || directionX < 0 && facingRight)
+        if (directionX < 0)
         {
-            facingRight = !facingRight;
-            Vector3 playerScale = transform.localScale;
-            playerScale.x *= -1;
-            transform.localScale = playerScale;
+            GetComponent<SpriteRenderer>().flipX = true;
         }
+        else if (directionX > 0)
+            GetComponent<SpriteRenderer>().flipX = false;
     }
 }
