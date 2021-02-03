@@ -46,7 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0e2276f15e1dd48855a7942ab54865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemsToPool: []
+  ItemsToPool:
+  - objectToPool: {fileID: 1166030025051436806, guid: 79bffc8cc798b394ba7e064192252a0b, type: 3}
+    amountToPool: 100
+    Expand: 1
 --- !u!114 &2542492889653457257
 MonoBehaviour:
   m_ObjectHideFlags: 0

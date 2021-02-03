@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d4e8f002cbc754e9475b7b5111b352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_player: {fileID: 0}
 --- !u!50 &6506341647632136916
 Rigidbody2D:
   serializedVersion: 4
@@ -159,6 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_publicplayer: {fileID: 11400000, guid: e85a249bd895a8e47a7b2f77651f47a5, type: 2}
+  m_playerstats: {fileID: 0}
 --- !u!1 &6506341648716087494
 GameObject:
   m_ObjectHideFlags: 0

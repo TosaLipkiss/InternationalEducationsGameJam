@@ -97,6 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waves:
   - {fileID: 11400000, guid: 0a8bc67569ecfb849b3d260f6e6e52c7, type: 2}
-  m_DelayWave: 0
+  m_DelayWave: 1
   m_DelayUnit: 1
   m_Spawnlocation: {fileID: 2843953670743041345}
