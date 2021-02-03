@@ -46,7 +46,7 @@ public class Lick : MonoBehaviour
     {
         if (currentState == LickState.Input)
         {
-            if (Input.GetKeyDown(KeyCode.A) && isNormalLicking == false && isSuperLicking == false)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && isNormalLicking == false && isSuperLicking == false)
             {
                 tongueSpeed = 1.0f;
                 tongueMaxStretch = 0.2f;
