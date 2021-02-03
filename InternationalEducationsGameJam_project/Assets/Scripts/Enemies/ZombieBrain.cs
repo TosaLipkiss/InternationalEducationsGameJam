@@ -84,11 +84,11 @@ public class ZombieBrain : MonoBehaviour, IAttackable
             {
                StartCoroutine(PlaySound(m_Breathing));
             }
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, GeneralManager.m_Instance.m_Player.transform.position, m_Enemy.m_VisionRange, m_Enemy.m_PlayerMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, GeneralManager.m_Instance.m_Player.transform.position, Mathf.Infinity);
             if (hit.collider != null)
             {
                 Debug.Log("hit");
-              if (hit.collider.tag == "Player")
+              if (hit.collider.CompareTag("Player"))
               {
                     Debug.Log("hit Player");
                 //transform.LookAt(hit.transform.position);
@@ -126,7 +126,6 @@ public class ZombieBrain : MonoBehaviour, IAttackable
     }
     private IEnumerator PlaySound(AudioClip Clip)
     {
-        Debug.Log("playing sound");
         m_AudioSource.clip = Clip;
         m_AudioSource.Play();
         SoundManager.m_Instance.m_ZombieSoundActive = true;

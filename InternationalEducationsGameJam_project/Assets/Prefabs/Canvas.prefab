@@ -385,6 +385,8 @@ MonoBehaviour:
   - m_Parent: {fileID: 4406134602151556958}
     m_ObjectName: Pause
   m_AllUI: []
+  m_DefaultScoreText: 
+  m_ScoreText: {fileID: 446582694833048939}
 --- !u!1 &4406134601070477526
 GameObject:
   m_ObjectHideFlags: 0

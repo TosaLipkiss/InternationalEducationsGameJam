@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Score")]
     public string m_DefaultScoreText;
-    private TextMeshPro m_ScoreText;
+    [SerializeField]private TMP_Text m_ScoreText;
     public Action<int> m_OnScoreChanged;
     private void Awake()
     {
@@ -62,6 +62,10 @@ public class UIManager : MonoBehaviour
     private void OnScoreChange(int Score)
     {
         m_ScoreText.text = m_DefaultScoreText + Score;
+    }
+    public void Victory()
+    {
+
     }
     #endregion
     #region UIBUTTONS
