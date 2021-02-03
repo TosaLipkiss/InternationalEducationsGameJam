@@ -33,6 +33,7 @@ public class ZombieBrain : MonoBehaviour, IAttackable
         Move();
         CheckIfInCameraVision();
         PlayerInVision();
+        RaycastPlayer();
     }
     #region Movement
     #region Direction
@@ -41,7 +42,7 @@ public class ZombieBrain : MonoBehaviour, IAttackable
         while (!m_Enemy.m_SpottedEnemy)
         {
             NewDirection();
-            yield return new WaitUntil(() => m_Enemy.m_Arrived);
+            yield return new WaitUntil(() => m_Enemy.m_Arrived || m_Enemy.m_SpottedEnemy);
         }
     }
     private void NewDirection()
@@ -84,20 +85,25 @@ public class ZombieBrain : MonoBehaviour, IAttackable
             {
                //StartCoroutine(PlaySound(m_Breathing));
             }
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, GeneralManager.m_Instance.m_Player.transform.position, m_Enemy.m_VisionRange,m_Enemy.m_PlayerMask);
-            if (hit.collider != null)
+            else
             {
-              if (hit.collider.CompareTag("Player"))
-              {
+                //transform.LookAt(m_Waypoint);
+            }
+        }
+
+    }
+    private void RaycastPlayer()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, GeneralManager.m_Instance.m_Player.transform.position, m_Enemy.m_VisionRange, m_Enemy.m_PlayerMask);
+        if (hit.collider != null)
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
                 //transform.LookAt(hit.transform.position);
                 m_Enemy.m_SpottedEnemy = true;
                 m_Enemy.m_TargetPosition = hit.transform.position;
                 m_Enemy.m_Target = hit.collider.gameObject;
-              }
-            }
-            else
-            {
-                //transform.LookAt(m_Waypoint);
+                m_Enemy.m_Arrived = true;
             }
         }
     }
@@ -154,6 +160,10 @@ public class ZombieBrain : MonoBehaviour, IAttackable
         {
             Debug.Log("tongue");
             TakeDamage(1);
+        }
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<IAttackable>().TakeDamage(1);
         }
     }
     public void TakeDamage(int damage)

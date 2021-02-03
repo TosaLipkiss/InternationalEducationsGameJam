@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     float runSpeed = 0.5f;
 
     //ScriptableObject
-    private ScribtablePlayer m_player;
+    public ScribtablePlayer m_player; //use this
 
     //Rb
     private Rigidbody2D rb;

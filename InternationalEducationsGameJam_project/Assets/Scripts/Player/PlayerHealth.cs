@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour, IAttackable
 {
     //ScriptableObject
     public ScribtablePlayer m_publicplayer;
-    private ScribtablePlayer m_playerstats;
+    public ScribtablePlayer m_playerstats; //editable stats <--
 
     private void Awake()
     {
@@ -31,11 +31,6 @@ public class PlayerHealth : MonoBehaviour, IAttackable
     }
     #endregion
 
-    private void OnCollisionEnter(Collision collision)
-    {
-            if (collision.gameObject.CompareTag("Enemy"))
-                TakeDamage(1);
-    }
     public ScribtablePlayer ReturnPlayerStats()
     {
         return m_playerstats;
