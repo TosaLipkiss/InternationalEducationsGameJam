@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //ScriptableObject
+    private ScribtablePlayer m_player;
+
     //Rb
     private Rigidbody2D rb;
 
     //Vector
     private Vector2 Axis;
 
-    //Float
-    [SerializeField] private float movingSpeed;
-
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        m_player = GetComponent<PlayerHealth>().ReturnPlayerStats();
     }
 
     // Update is called once per frame
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         Axis.x = Input.GetAxis("Horizontal");
         Axis.y = Input.GetAxis("Vertical");
 
-        rb.velocity = Axis * movingSpeed;
+        rb.velocity = Axis * m_player.m_Speed * Time.deltaTime;
 
     }
 }

@@ -23,7 +23,7 @@ public class Lick : MonoBehaviour
     {
         if(currentState == LickState.Input)
         {
-            if(Input.GetKeyDown(KeyCode.A))
+            if(Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Debug.Log("Input -> stretch increase");
                 currentState = LickState.StretchIncrease;

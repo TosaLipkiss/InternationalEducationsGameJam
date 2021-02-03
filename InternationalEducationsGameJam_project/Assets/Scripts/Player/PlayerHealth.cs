@@ -2,30 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IAttackable
 {
-    //Float
-    private float maxHealth = 3;
-    [SerializeField] private float currentHealth;
+    //ScriptableObject
+    public ScribtablePlayer m_publicplayer;
+    private ScribtablePlayer m_playerstats;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        currentHealth = maxHealth;
+        m_playerstats = Instantiate(m_publicplayer);
     }
 
-    // Update is called once per frame
-    void Update()
+    #region Attackable
+    public void TakeDamage(int Damage)
     {
-        
+        if (m_playerstats.m_Health - Damage <= 0)
+        {
+            StartCoroutine(Death());
+        }
+        else
+            m_playerstats.m_Health -= Damage;
     }
+
+    public IEnumerator Death()
+    {
+        yield return null;
+    }
+    #endregion
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            currentHealth -= 1;
+            TakeDamage(1);
         }
+    }
+
+    public ScribtablePlayer ReturnPlayerStats()
+    {
+        return m_playerstats;
     }
 
 }
