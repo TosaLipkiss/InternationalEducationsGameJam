@@ -19,9 +19,6 @@ public class ObjectPooling : MonoBehaviour
     private void Awake()
     {
         m_Instance = this;
-    }
-    private void Start()
-    {
         pooledObjects = new List<GameObject>();
 
         foreach (ObjectPoolItem item in ItemsToPool)
@@ -34,11 +31,11 @@ public class ObjectPooling : MonoBehaviour
             }
         }
     }
-    public GameObject GetPooledObject(GameObject tag,Transform Position)
+    public GameObject GetPooledObject(string tag,Transform Position)
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
-            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i] == tag)
+            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].CompareTag(tag))
             {
                 pooledObjects[i].SetActive(true);
                 pooledObjects[i].gameObject.transform.position = Position.position;
@@ -47,7 +44,7 @@ public class ObjectPooling : MonoBehaviour
         }
         foreach (ObjectPoolItem item in ItemsToPool)
         {
-            if (item.objectToPool == tag)
+            if (item.objectToPool.CompareTag(tag))
             {
                 if (item.Expand)
                 {

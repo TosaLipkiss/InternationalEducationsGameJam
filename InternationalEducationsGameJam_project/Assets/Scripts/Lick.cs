@@ -118,5 +118,6 @@ public class Lick : MonoBehaviour
             isSuperLicking = false;
         }
     }
+
 }
 

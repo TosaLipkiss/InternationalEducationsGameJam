@@ -26,18 +26,16 @@ public class PlayerHealth : MonoBehaviour, IAttackable
 
     public IEnumerator Death()
     {
+        gameObject.SetActive(false);
         yield return null;
     }
     #endregion
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            TakeDamage(1);
-        }
+            if (collision.gameObject.CompareTag("Enemy"))
+                TakeDamage(1);
     }
-
     public ScribtablePlayer ReturnPlayerStats()
     {
         return m_playerstats;

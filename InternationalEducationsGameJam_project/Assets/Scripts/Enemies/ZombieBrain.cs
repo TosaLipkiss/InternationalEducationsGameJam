@@ -82,15 +82,13 @@ public class ZombieBrain : MonoBehaviour, IAttackable
           
             if (!SoundManager.m_Instance.m_ZombieSoundActive)
             {
-               StartCoroutine(PlaySound(m_Breathing));
+               //StartCoroutine(PlaySound(m_Breathing));
             }
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, GeneralManager.m_Instance.m_Player.transform.position, Mathf.Infinity);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, GeneralManager.m_Instance.m_Player.transform.position, m_Enemy.m_VisionRange,m_Enemy.m_PlayerMask);
             if (hit.collider != null)
             {
-                Debug.Log("hit");
               if (hit.collider.CompareTag("Player"))
               {
-                    Debug.Log("hit Player");
                 //transform.LookAt(hit.transform.position);
                 m_Enemy.m_SpottedEnemy = true;
                 m_Enemy.m_TargetPosition = hit.transform.position;
@@ -110,7 +108,10 @@ public class ZombieBrain : MonoBehaviour, IAttackable
             //transform.position += transform.TransformDirection(Vector3.forward) * m_Enemy.m_MovementSpeed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, GeneralManager.m_Instance.m_Player.transform.position, m_Enemy.m_MovementSpeed * Time.deltaTime);
             if (Vector2.Distance(transform.position, m_Enemy.m_TargetPosition) < 0.1f)
-                Attack();
+            {
+
+                //Attack();
+            }
         }
     }
     #endregion
@@ -146,10 +147,19 @@ public class ZombieBrain : MonoBehaviour, IAttackable
             }
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("hit");
+        if (collision.gameObject.CompareTag("Tongue"))
+        {
+            Debug.Log("tongue");
+            TakeDamage(1);
+        }
+    }
     public void TakeDamage(int damage)
     {
         if (m_Enemy.m_Health - damage <= 0)
-            Death();
+            StartCoroutine(Death());
         else
         {
             m_Enemy.m_Health -= damage; //Take Damage
@@ -160,8 +170,8 @@ public class ZombieBrain : MonoBehaviour, IAttackable
     {
         GameStats.m_Instance.Addscore(m_Enemy.m_Score); // Add Score
         PlaySound(m_Death);
-        yield return new WaitForSeconds(m_AudioSource.clip.length);
         gameObject.SetActive(false); // Set the object False and return it to the object pool
+        yield return new WaitForSeconds(m_Death.length);
     }
     #endregion
 }

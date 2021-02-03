@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0515fa7b62ad8434c9abfe5a185b275a, type: 3}
   m_Name: NormalZombie 1
   m_EditorClassIdentifier: 
-  m_Health: 100
-  m_MovementSpeed: 10
+  m_Health: 1
+  m_MovementSpeed: 3
   m_WanderRange: 10
   m_WallMask:
     serializedVersion: 2

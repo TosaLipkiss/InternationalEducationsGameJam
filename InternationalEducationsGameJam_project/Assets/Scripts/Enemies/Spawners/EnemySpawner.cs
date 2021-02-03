@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
             int WaveIndex = Random.Range(0, Waves.Count);
             for (int i = 0; i < Waves[WaveIndex].m_Wave.Count; i++)
             {
-                GameObject EnemyUnit = ObjectPooling.m_Instance.GetPooledObject(Waves[WaveIndex].m_Wave[i], m_Spawnlocation); //Spawns an Enemy Unit and gives the location.
+                GameObject EnemyUnit = ObjectPooling.m_Instance.GetPooledObject(Waves[WaveIndex].m_Wave[i].tag, m_Spawnlocation); //Spawns an Enemy Unit and gives the location.
                 EnemyUnit.GetComponent<ZombieBrain>().AssignSound(m_Death,m_Attack,m_Breathing,m_Growl); // Assigning Value's
                 yield return new WaitForSeconds(m_DelayUnit);
             }
