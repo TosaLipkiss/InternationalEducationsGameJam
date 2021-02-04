@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEditor.Animations;
 public class ZombieBrain : MonoBehaviour, IAttackable
 {
     #region Variables
@@ -180,7 +180,9 @@ public class ZombieBrain : MonoBehaviour, IAttackable
     {
         GameStats.m_Instance.Addscore(m_Enemy.m_Score); // Add Score
         PlaySound(m_Death);
-        gameObject.SetActive(false); // Set the object False and return it to the object pool
+
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Animator>().runtimeAnimatorController = GeneralManager.m_Instance.m_RevivedAnimation;
         yield return new WaitForSeconds(m_Death.length);
     }
     #endregion

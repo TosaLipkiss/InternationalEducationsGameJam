@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
     #region UICHANGE
     private void OnScoreChange(int Score)
     {
-        m_ScoreText.text = m_DefaultScoreText + Score;
+        m_ScoreText.text = m_DefaultScoreText + Score + "/100";
     }
     public void Victory()
     {
