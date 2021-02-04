@@ -34,7 +34,6 @@ public class MapSpeed : MonoBehaviour
 
         float b = a.anchoredPosition.x;
         Vector2 apos = a.anchoredPosition;
-        Debug.Log(b);
         b = Mathf.Clamp(b, -175.5f, 184.3f);
         
         float c = a.anchoredPosition.y;
