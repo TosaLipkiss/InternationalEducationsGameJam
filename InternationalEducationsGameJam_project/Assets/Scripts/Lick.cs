@@ -66,7 +66,7 @@ public class Lick : MonoBehaviour
                 isNormalLicking = true;
                 currentState = LickState.StretchIncrease;
                 CalculateAngle();
-
+                GetComponentInParent<AudioSource>().Play();
             }
         }
         else if (currentState == LickState.StretchIncrease)
@@ -107,6 +107,7 @@ public class Lick : MonoBehaviour
                 isSuperLicking = true;
                 currentState = LickState.StretchIncrease;
                 CalculateAngle();
+                GetComponentInParent<AudioSource>().Play();
             }
         }
         else if (currentState == LickState.StretchIncrease)

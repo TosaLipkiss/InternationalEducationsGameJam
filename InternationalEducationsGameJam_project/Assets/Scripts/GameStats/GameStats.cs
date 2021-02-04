@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameStats : MonoBehaviour
 {
     public static GameStats m_Instance; //Singeton
+
+    
+
     private int m_Score; //The overall score of the player
     private int m_ZombieKilled;
     private void Awake()

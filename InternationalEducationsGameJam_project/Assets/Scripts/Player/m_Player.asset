@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: m_Player
   m_EditorClassIdentifier: 
   m_Speed: 350
-  m_Health: 5
+  m_Health: 10
