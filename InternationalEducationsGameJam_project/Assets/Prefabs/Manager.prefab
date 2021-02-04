@@ -75,7 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bba8694713c3bc43a0951ab55f46743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerSounds: []
+  m_PlayerSounds:
+  - {fileID: 11400000, guid: 846f16d1b3e51e24b99f3c9b404e3684, type: 2}
   m_ZombieSounds:
   - {fileID: 11400000, guid: 45d094bba50fea440b2a92cde6f495ba, type: 2}
   m_EnviromentSound: []
