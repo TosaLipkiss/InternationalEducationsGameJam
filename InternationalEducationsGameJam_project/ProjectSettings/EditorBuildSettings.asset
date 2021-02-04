@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final Build/CreditsScreen.unity
     guid: 9e3e3048fb7787a4bb9a766532c9e027
+  - enabled: 1
+    path: Assets/Scenes/Final Build/MapScene.unity
+    guid: a0d053b4fd16d2a4399cd87204544642
+  - enabled: 1
+    path: Assets/Scenes/Final Build/SecondMap.unity
+    guid: 60dc3ce30728fd24cb8915b73159565f
   m_configObjects: {}
