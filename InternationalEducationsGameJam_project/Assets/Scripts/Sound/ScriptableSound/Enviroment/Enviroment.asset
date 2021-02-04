@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587061eb327efc7409d620b1472e55a0, type: 3}
   m_Name: Enviroment
   m_EditorClassIdentifier: 
-  m_SoundType: []
+  m_SoundType:
+  - m_AudioList:
+    - {fileID: 8300000, guid: 3b656f7fe49e10b40ae6f0087fb92aeb, type: 3}
+    AudioType: Normal

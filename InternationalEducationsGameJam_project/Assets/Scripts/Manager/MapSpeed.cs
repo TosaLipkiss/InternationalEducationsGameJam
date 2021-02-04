@@ -29,7 +29,23 @@ public class MapSpeed : MonoBehaviour
         axis.y = Input.GetAxis("Vertical");
         rb.velocity = axis * m_stats.m_Speed * Time.deltaTime;
 
-        //Face direction in X axis
+
+        RectTransform a = GetComponent<RectTransform>();
+
+        float b = a.anchoredPosition.x;
+        Vector2 apos = a.anchoredPosition;
+        Debug.Log(b);
+        b = Mathf.Clamp(b, -175.5f, 184.3f);
+        
+        float c = a.anchoredPosition.y;
+        c = Mathf.Clamp(c, -175.5f, 152);
+        apos.y = c;
+        apos.x = b;
+
+        a.anchoredPosition = apos;
+        //a.rect. (b,c,a.rect.width,a.rect.height);
+        
+
     }
     public void ChangePlayerSpeed(int speed)
     {
