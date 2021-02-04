@@ -344,6 +344,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6506341648716087493, guid: ee5bd1d4dbf00c74b8f851dc2d3e391f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.197
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506341648716087493, guid: ee5bd1d4dbf00c74b8f851dc2d3e391f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.71
+      objectReference: {fileID: 0}
     - target: {fileID: 6506341648716087494, guid: ee5bd1d4dbf00c74b8f851dc2d3e391f, type: 3}
       propertyPath: m_Layer
       value: 6
