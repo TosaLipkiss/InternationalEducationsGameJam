@@ -24,5 +24,5 @@ public class ScriptableEnemy : ScriptableObject
     [System.NonSerialized] public GameObject m_Target; // The Current Target
     [Header("Score")]
     [Tooltip("Score That you get from killing this unit")]
-    public int m_Score = 100; //The Score this unit gives upon dying.
+    public int m_Score = 1; //The Score this unit gives upon dying.
 }

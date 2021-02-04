@@ -25,4 +25,4 @@ MonoBehaviour:
   m_AttackDamage: 10
   m_VisionRange: 30
   m_AttackSpeed: 2
-  m_Score: 100
+  m_Score: 1

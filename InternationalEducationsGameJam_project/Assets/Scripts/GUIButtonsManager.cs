@@ -17,7 +17,7 @@ public class GUIButtonsManager : MonoBehaviour
 
     public void CreditsButton()
     {
-        Debug.Log("Doing nothing right now");
+        SceneManager.LoadScene("CreditsScreen");
     }
 
     public void QuitButton()
