@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     public Action<int> m_OnScoreChanged;
 
     public GameObject victoryScreen;
+    public TMP_Text m_VictoryScoreText; 
     private void Awake()
     {
         if (m_Instance == null) //Checks if Instance == nul;
@@ -73,6 +74,7 @@ public class UIManager : MonoBehaviour
     public void Victory()
     {
         Time.timeScale = 0;
+        m_VictoryScoreText.text = "Final Score:" + GameStats.m_Instance.ReturnScore(); 
         victoryScreen.SetActive(true);
     }
     #endregion
