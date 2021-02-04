@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System;
 using TMPro;
+
 [System.Serializable]
 public class UI
 {
@@ -24,6 +26,9 @@ public class UIManager : MonoBehaviour
     public string m_DefaultScoreText;
     [SerializeField]private TMP_Text m_ScoreText;
     public Action<int> m_OnScoreChanged;
+
+    public GameObject victoryScreen;
+    public TMP_Text m_VictoryScoreText; 
     private void Awake()
     {
         if (m_Instance == null) //Checks if Instance == nul;
@@ -40,8 +45,11 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        m_ScoreText.text = m_DefaultScoreText + "0"; // Sets Standard Text
+        if (m_ScoreText != null)
+        {
+        m_ScoreText.text = m_DefaultScoreText + "0/100" ; // Sets Standard Text
         m_OnScoreChanged += OnScoreChange; //Subscribe to function
+        }
     }
     private void Update()
     {
@@ -61,11 +69,13 @@ public class UIManager : MonoBehaviour
     #region UICHANGE
     private void OnScoreChange(int Score)
     {
-        m_ScoreText.text = m_DefaultScoreText + Score;
+        m_ScoreText.text = m_DefaultScoreText + Score + "/100";
     }
     public void Victory()
     {
-
+        Time.timeScale = 0;
+        m_VictoryScoreText.text = "Final Score:" + GameStats.m_Instance.ReturnScore(); 
+        victoryScreen.SetActive(true);
     }
     #endregion
     #region UIBUTTONS

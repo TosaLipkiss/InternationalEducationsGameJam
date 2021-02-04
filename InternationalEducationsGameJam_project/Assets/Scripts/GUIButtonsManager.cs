@@ -17,11 +17,22 @@ public class GUIButtonsManager : MonoBehaviour
 
     public void CreditsButton()
     {
-        Debug.Log("Doing nothing right now");
+        SceneManager.LoadScene("CreditsScreen");
     }
 
     public void QuitButton()
     {
         Application.Quit();
+    }
+
+    public void BackToMainMenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void RestartButton()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

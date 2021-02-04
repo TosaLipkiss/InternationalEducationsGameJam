@@ -23,6 +23,9 @@ public class GameStats : MonoBehaviour
             UIManager.m_Instance.Victory();
 
     }
-
+    public int ReturnScore()
+    {
+        return m_Score;
+    }
     
 }
