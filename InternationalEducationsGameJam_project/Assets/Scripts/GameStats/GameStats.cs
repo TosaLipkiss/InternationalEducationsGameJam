@@ -19,7 +19,7 @@ public class GameStats : MonoBehaviour
         m_ZombieKilled += 1;
         UIManager.m_Instance.m_OnScoreChanged(m_Score); //Changes UI
 
-        if (m_ZombieKilled >= 3)
+        if (m_ZombieKilled >= 100)
             UIManager.m_Instance.Victory();
 
     }
