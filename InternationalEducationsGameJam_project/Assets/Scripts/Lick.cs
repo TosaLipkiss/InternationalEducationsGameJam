@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Lick : MonoBehaviour
 {
     public Image SuperLickBar;
-
+    Animator animator;
     bool isSuperLicking = false;
     bool isNormalLicking = false;
     float tongueStartStretch = 0;
@@ -29,6 +29,7 @@ public class Lick : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         currentTime = 0f;
     }
 
