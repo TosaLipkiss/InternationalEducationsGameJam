@@ -49,13 +49,11 @@ public class PlayerHealth : MonoBehaviour, IAttackable
             {
                 if (m_Health[i].HalfHeart)
                 {
-                    Debug.Log("heart");
                     m_Health[i].m_Health.SetActive(false);
                     break;
                 }
                 else
                 {
-
                     m_Health[i].HalfHeart = true;
                     m_Health[i].m_Health.GetComponent<Image>().sprite = m_HalfHeart;
                     break;
