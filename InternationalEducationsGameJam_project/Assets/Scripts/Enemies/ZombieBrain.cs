@@ -30,10 +30,13 @@ public class ZombieBrain : MonoBehaviour, IAttackable
     }
     private void Update()
     {
+        Vector3 trans = transform.position;
         Move();
         CheckIfInCameraVision();
         PlayerInVision();
         RaycastPlayer();
+
+        GetComponent<SpriteRenderer>().flipX = trans.x < transform.position.x;
     }
     #region Movement
     #region Direction
