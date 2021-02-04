@@ -7,14 +7,24 @@ public class GUIButtonsManager : MonoBehaviour
 {
     public void StartButton()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(ChosenMap.m_ChosenMap);
     }
-
+    public void MapOne()
+    {
+        ChosenMap.m_ChosenMap = "MainScene";
+    }
+    public void MapTwo()
+    {
+        ChosenMap.m_ChosenMap = "SecondMap";
+    }
     public void SettingsButton()
     {
         Debug.Log("Doing nothing right now");
     }
-
+    public void MapButton()
+    {
+        SceneManager.LoadScene("MapScene");
+    }
     public void CreditsButton()
     {
         SceneManager.LoadScene("CreditsScreen");

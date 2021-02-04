@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7b1bdf51fa04c349939e92adef46eba, type: 3}
-  m_Name: m_Player
+  m_Script: {fileID: 11500000, guid: 587061eb327efc7409d620b1472e55a0, type: 3}
+  m_Name: PlayerSound
   m_EditorClassIdentifier: 
-  m_Speed: 350
-  m_Health: 10
+  m_SoundType:
+  - m_AudioList:
+    - {fileID: 8300000, guid: 3d25febefb9991a4b8fb6ee2ba13c46e, type: 3}
+    AudioType: Lick

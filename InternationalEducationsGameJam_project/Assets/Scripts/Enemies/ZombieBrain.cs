@@ -160,6 +160,7 @@ public class ZombieBrain : MonoBehaviour, IAttackable
         {
             Debug.Log("tongue");
             TakeDamage(1);
+            GeneralManager.m_Instance.m_Player.GetComponent<PlayerHealth>().AddHeart(1);
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
