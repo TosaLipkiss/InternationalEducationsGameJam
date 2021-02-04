@@ -40,8 +40,11 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
+        if (m_ScoreText != null)
+        {
         m_ScoreText.text = m_DefaultScoreText + "0"; // Sets Standard Text
         m_OnScoreChanged += OnScoreChange; //Subscribe to function
+        }
     }
     private void Update()
     {

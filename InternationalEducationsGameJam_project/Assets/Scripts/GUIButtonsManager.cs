@@ -24,4 +24,15 @@ public class GUIButtonsManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void BackToMainMenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void RestartButton()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
