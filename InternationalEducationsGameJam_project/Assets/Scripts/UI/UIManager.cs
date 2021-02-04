@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System;
 using TMPro;
+
 [System.Serializable]
 public class UI
 {
@@ -24,6 +26,8 @@ public class UIManager : MonoBehaviour
     public string m_DefaultScoreText;
     [SerializeField]private TMP_Text m_ScoreText;
     public Action<int> m_OnScoreChanged;
+
+    public GameObject victoryScreen;
     private void Awake()
     {
         if (m_Instance == null) //Checks if Instance == nul;
@@ -68,7 +72,8 @@ public class UIManager : MonoBehaviour
     }
     public void Victory()
     {
-
+        Time.timeScale = 0;
+        victoryScreen.SetActive(true);
     }
     #endregion
     #region UIBUTTONS
